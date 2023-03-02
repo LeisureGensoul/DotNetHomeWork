@@ -12,7 +12,7 @@ namespace myApp
                 double OperandFront = Convert.ToDouble(Console.ReadLine());
                 double OperandBehind = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Enter The Operator:");
-                string Operator = Console.ReadLine();
+                string? Operator = Console.ReadLine();
                 Calculator cal = new Calculator();
                 switch (Operator)
                 {
