@@ -1,2 +1,4 @@
 # DotNetHomeWork
-This is my homework about "Software Construction Fundamentals". And my name is Gensoul(aka JiangShuo).
+This is my homework about "Software Construction Fundamentals".
+And my name is Gensoul(aka JiangShuo).
+The teacher is Jiaxy.
