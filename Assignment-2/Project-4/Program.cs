@@ -27,9 +27,13 @@ namespace TEMP
                 }
             }
 
-            CheckMatrix(Matrix, Row, Column);
+            bool check = CheckMatrix(Matrix, Row, Column);
+            if (check)
+            {
+                Console.WriteLine("yes, it is!");
+            }
+            else { Console.WriteLine("No, it isn't!"); }
 
-            
             //Console.WriteLine("二维数组为：");
             //输出二维数组
             /*for (int i = 1; i <= Row; i++)
@@ -39,7 +43,7 @@ namespace TEMP
                 Console.WriteLine();
             }*/
         }
-        public static void CheckMatrix(int[,] Matrix, int Row, int Column)
+        public static bool CheckMatrix(int[,] Matrix, int Row, int Column)
         {
             bool check = true;
             int place = 1, record = 0;
@@ -54,11 +58,7 @@ namespace TEMP
                 }
                 record = Matrix[place, place];
             }
-            if (check)
-            {
-                Console.WriteLine("yes, it is!");
-            }
-            else { Console.WriteLine("No, it isn't!"); }
+            return check;
         }
     }
 
