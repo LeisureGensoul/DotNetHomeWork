@@ -115,9 +115,10 @@ namespace MyApp
             double d1, d2, d3;
             //Random类还提供了Random.NextDouble()方法产生一个范围在0.0-1.0之间的随机的双精度浮点数；
             
-            d1 = rd.NextDouble() * 100 - 50;
-            d2 = rd.NextDouble() * 100 - 50;
-            d3 = rd.NextDouble() * 100 - 50;
+            //使得满足形状要求的可能性为60%。
+            d1 = rd.NextDouble() * 100;
+            d2 = rd.NextDouble() * 100;
+            d3 = rd.NextDouble() * 100;
 
             Shape shape = null;
             switch (choose)
@@ -126,9 +127,12 @@ namespace MyApp
                     shape = new Triangle(d1, d2, d3);
                     break;
                 case "Rectangle":
+                    d1 -= 20;
+                    d2 -= 20;
                     shape = new Rectangle(d1, d2);
                     break;
                 case "Square":
+                    d1 -= 50;
                     shape = new Square(d1);
                     break;
             }
@@ -144,33 +148,36 @@ namespace MyApp
             ArrayList AllShape = new ArrayList();
 
             string[] types = new string[3];
-            types[0] = "Triangle";
-            types[1] = "Rectangle";
+            types[0] = "Rectangle";
+            types[1] = "Triangle";
             types[2] = "Square";
 
             //int iSeed = 16;
             Random rd = new Random();
 
-            int iUp = 3;
-            int iDown = 0;
-            int iResult;
-
-            const int Num = 10;
+            const int TypeSize = 3;
+            const int Num = 500;
+            const int RequiredNum = 10;
 
             double TotalArea = 0;
+            int TotalNum = 0;
 
             for (int i = 0; i < Num; i++)
             {
-                iResult = rd.Next(iDown, iUp);
-
+                if (TotalNum >= RequiredNum)
+                {
+                    break;
+                }
+                int iResult = rd.Next() % TypeSize;
                 Shape temp = ShapeFactory.CreateShape(types[iResult]);
-
-                temp.factoryTest();
                 if (temp.JudgeShape())
                 {
+                    TotalNum++;
                     AllShape.Add(temp);
                     TotalArea += temp.CaculateArea();
-                    Console.WriteLine("This is the " + (i + 1) + "th one");
+
+                    Console.WriteLine("This is the " + TotalNum + "th one");
+                    temp.factoryTest();
                 }
 
             }
